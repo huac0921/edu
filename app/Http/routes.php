@@ -25,18 +25,20 @@ Route::group(['middleware' => ['web']], function () {
 
 });
 
+Route::post('/reg','Auth\AuthenticateController@register');
+
 Route::post('oauth/access_token', function() {
     return Response::json(Authorizer::issueAccessToken());
 });
 
-//Create a test user, you don't need this if you already have.
-Route::get('/register',function(){
-    $user = new User();
-    $user->name='tester';
-    $user->email='test@test.com';
-    $user->password = Hash::make('password');
-    $user->save();
-});
+////Create a test user, you don't need this if you already have.
+//Route::get('/register',function(){
+//    $user = new User();
+//    $user->name='tester';
+//    $user->email='test@test.com';
+//    $user->password = Hash::make('password');
+//    $user->save();
+//});
 $api = app('Dingo\Api\Routing\Router');
 
 //Show user info via restful service.
