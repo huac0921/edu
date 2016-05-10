@@ -13,7 +13,6 @@
 
 
 use App\Http\Models\User;
-use Illuminate\Support\Facades\Hash;
 
 
 Route::group(['middleware' => ['web']], function () {
@@ -24,6 +23,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/login','LoginController@login');
 
 });
+Route::post('/test','PostController@index');
 
 Route::post('/reg','Auth\AuthenticateController@register');
 
@@ -53,3 +53,4 @@ $api->version('v1', ['middleware' => 'api.auth'] , function ($api) {
         return ['now' => microtime(), 'date' => date('Y-M-D',time())];
     });
 });
+
